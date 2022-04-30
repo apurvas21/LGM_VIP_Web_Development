@@ -1,0 +1,131 @@
+<!-- Task 2 : Create a CALCULATOR
+-- Task done by SARAF APURVA RAJENDRA   -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Calculator by Apurva Saraf</title>
+</head>
+<body>
+  <div class="calculator" style="border-style: double; border-width: thick;">
+    <input type="text" class="display" disabled>
+    <div class="keys">
+      <div class="row">
+        <button value="7">7</button>
+        <button value="8">8</button>
+        <button value="9">9</button>
+        <button value="C" class="operator">C</button>
+      </div>
+      <div class="row">
+        <button value="4">4</button>
+        <button value="5">5</button>
+        <button value="6">6</button>
+        <button value="+" class="operator">+</button>
+      </div>
+      <div class="row">
+        <button value="1">1</button>
+        <button value="2">2</button>
+        <button value="3">3</button>
+        <button value="-" class="operator">-</button>
+      </div>
+      <div class="row">
+        <button value="0">0</button>
+        <button value="." class="operator">.</button>
+        <button value="*" class="operator">*</button>
+        <button value="/" class="operator">/</button>
+        <button value="=" class="operator">=</button>
+      </div>
+    </div>
+  </div>
+</body>
+<style>
+  
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-image: url(calciimg.png);
+  background-size: contain;
+  background-repeat:round;
+  background-attachment: fixed;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F0FFFF;
+  font-family: sans-serif;
+}
+.calculator {
+  width: 380px;
+  padding-bottom: 15px;
+  border-radius: 7px;
+  background-color: #E6E6FA;
+  box-shadow: 5px 8px 8px -2px rgba(0, 0, 0, 0.61);
+}
+.display {
+  width: 100%;
+  height: 80px;
+  border: 4%;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 2rem;
+  background-color: #FFF0F5;
+  color: #000;
+  text-align: right;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 0.005 px;
+  outline: none;
+  font-size: 2rem;
+  background-color: #708090;
+  color: #fff;
+  margin: 10px;
+}
+button:hover {
+  cursor: pointer;
+}
+.operator {
+  background-color: #FFA500;
+  color: #000;
+}
+</style>
+<script>
+  
+const buttons = document.querySelectorAll('button');
+const display = document.querySelector('.display');
+buttons.forEach(function(button) {
+  button.addEventListener('click', calculate);
+});
+function calculate(event) {
+  const clickedButtonValue = event.target.value;
+  if (clickedButtonValue === '=') {
+      try {
+          display.value = eval(display.value);
+      }
+      catch{
+          alert("Invalid Input! Give valid input!");
+      }
+    if (display.value !== '') 
+    {
+      display.value = eval(display.value);
+    }
+  } else if (clickedButtonValue === 'C') 
+  {
+    display.value = '';
+  } else {
+    display.value += clickedButtonValue;
+  }
+}
+</script>
+</html>
